@@ -60,6 +60,5 @@ if __name__ == '__main__':
     w = weboob("plop")
     weboob_transactions = w.get_all_transactions()
 
-    res = set(weboob_transactions) - set(beancount_transactions)
-    for transaction in res:
-        print(transaction)
+    missing_transactions = set(weboob_transactions) - set(beancount_transactions)
+    accounts[0].write_transactions(list(missing_transactions))
