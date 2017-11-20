@@ -1,9 +1,6 @@
 
-2010-01-01 open Expenses:Divers
-2010-01-01 open Assets:CCP
-
 {% for transaction in transactions %}
-{{ transaction.date }} * "plop"
+{{ transaction.date }} * "{{ transaction.label }}"
     Assets:CCP             {{ transaction.amount }} EURO
     Expenses:Divers
 {% endfor %}

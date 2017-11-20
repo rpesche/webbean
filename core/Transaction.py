@@ -8,10 +8,13 @@ class Transaction:
 
     account = ""
 
-    def __init__(self, date=None, amount=None, account=None):
+    label = "Unknow"
+
+    def __init__(self, date=None, amount=None, account=None, label=None):
         self.date = date
         self.amount = amount
         self.account = account
+        self.label = label
 
     def __str__(self):
         return "{}: {}".format(self.date, self.amount)
