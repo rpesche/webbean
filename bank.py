@@ -5,7 +5,6 @@ from os import path
 import argparse
 import logging
 
-from jinja2 import Environment, PackageLoader
 
 from modules import MODULES
 
@@ -15,16 +14,6 @@ from modules.weboob import weboob
 # To avoid lint error
 beancount.do_nothing()
 weboob.do_nothing()
-
-
-def write_transactions(account_transactions):
-    env = Environment(loader=PackageLoader('bank', 'resources/template'))
-    template = env.get_template('beancount.jinja')
-
-    cpp_ids = {cpp_id for cpp_id, _ in account_transactions}
-    account_transactions = sorted(account_transactions, key=lambda x: x[1].date)
-
-    print(template.render(account_transactions=account_transactions, cpp_ids=cpp_ids))
 
 
 def main(args):

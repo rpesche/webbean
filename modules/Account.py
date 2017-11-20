@@ -1,7 +1,8 @@
 
+from jinja2 import Environment, PackageLoader
+
 
 class Account:
-    filename = ""
 
     def __init__(self, filename):
         self.filename = filename
@@ -12,5 +13,11 @@ class Account:
     def do_nothing():
         pass
 
-    def write_transactions(self, transactions):
-        raise LookupError
+    def write_transactions(self, account_transactions):
+
+        env = Environment(loader=PackageLoader('bank', 'resources/template'))
+        template = env.get_template(self.resource_filename)
+
+        account_transactions = sorted(account_transactions, key=lambda x: x.date)
+
+        print(template.render(transactions=account_transactions))
