@@ -1,8 +1,8 @@
 from beancount.loader import load_file as beancount_load_file
 from beancount.core.data import Transaction as beancount_Transaction
 
-from modules.Account import Account
-from core.Transaction import Transaction
+from webbean.modules.Account import Account
+from webbean.core.Transaction import Transaction
 
 
 class beancount(Account):

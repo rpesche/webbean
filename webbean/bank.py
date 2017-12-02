@@ -6,10 +6,10 @@ import argparse
 import logging
 
 
-from modules import MODULES
+from webbean.modules import MODULES
 
-from modules.beancount import beancount
-from modules.weboob import weboob
+from webbean.modules.beancount import beancount
+from webbean.modules.weboob import weboob
 
 # To avoid lint error
 beancount.do_nothing()

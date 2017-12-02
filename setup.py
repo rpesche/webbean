@@ -11,7 +11,6 @@ setup(
     license="GNU AGPL 3",
     keywords="accounting weboob synchronization",
     url="http://packages.python.org/webbean",
-    packages=['webbean'],
     long_description=open('README').read(),
     classifiers=[
         "Development Status :: 1 - Planning",
@@ -25,7 +24,7 @@ setup(
 
     entry_points={
             'console_scripts': [
-                'webbean = bank:main',
+                'webbean = webbean.bank:main',
             ],
         },
 )
