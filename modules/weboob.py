@@ -11,6 +11,7 @@ class weboob(Account):
 
         weboob = Weboob()
         backend = weboob.load_backends(names=['bp'])['bp']
+        backend.config['login'].set("1553494112")
         backend.config['password'].set("659333")
 
         account_transactions = []
