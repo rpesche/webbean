@@ -15,7 +15,8 @@ class Account:
 
     def write_transactions(self, account_transactions):
 
-        env = Environment(loader=PackageLoader('bank', 'resources/template'))
+        env = Environment(loader=PackageLoader('webbean',
+                                               'resources/template'))
         template = env.get_template(self.resource_filename)
 
         account_transactions = sorted(account_transactions, key=lambda x: x.date)

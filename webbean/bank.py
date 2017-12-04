@@ -6,20 +6,14 @@ import argparse
 import logging
 
 
-from modules import MODULES
+from webbean.modules import MODULES
 
-from modules.beancount import beancount
-from modules.weboob import weboob
+from webbean.modules.beancount import beancount
+from webbean.modules.weboob import weboob
 
 # To avoid lint error
 beancount.do_nothing()
 weboob.do_nothing()
-
-
-def main(args):
-
-    for arg in args:
-        pass
 
 
 def parse_arguments(args):
@@ -44,8 +38,7 @@ def add_modules_arguments(parser):
         parser.add_argument(f'--{module}', nargs='*')
 
 
-if __name__ == '__main__':
-
+def main():
     parser = argparse.ArgumentParser(description="Synchronise account")
     add_modules_arguments(parser)
 
@@ -62,3 +55,7 @@ if __name__ == '__main__':
 
     missing_transactions = set(weboob_transactions) - set(beancount_transactions)
     accounts[0].write_transactions(list(missing_transactions))
+
+
+if __name__ == '__main__':
+    main()

@@ -1,8 +1,8 @@
 
 from weboob.core import Weboob
 
-from modules.Account import Account
-from core.Transaction import Transaction
+from webbean.modules.Account import Account
+from webbean.core.Transaction import Transaction
 
 
 class weboob(Account):
