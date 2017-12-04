@@ -10,6 +10,7 @@ setup(
                  "between accounting file and bank"),
     license="GNU AGPL 3",
     packages=find_packages(),
+    install_requires=['beancount', 'weboob==1.3', 'jinja2==2.10'],
     include_package_data=True,
     keywords="accounting weboob synchronization",
     url="http://packages.python.org/webbean",
