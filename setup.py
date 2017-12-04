@@ -9,6 +9,7 @@ setup(
     description=("An application to get transactions diff"
                  "between accounting file and bank"),
     license="GNU AGPL 3",
+    packages=find_packages(),
     include_package_data=True,
     keywords="accounting weboob synchronization",
     url="http://packages.python.org/webbean",
