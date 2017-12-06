@@ -16,6 +16,8 @@ class weboob(Account):
 
         account_transactions = []
         for account in backend.iter_accounts():
+            if account.label != 'COMPTE BANCAIRE':
+                continue
             for weboob_transaction in backend.iter_history(account):
                 transaction = Transaction(date=weboob_transaction.date,
                                           amount=float(weboob_transaction.amount),
