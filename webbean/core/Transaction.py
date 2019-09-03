@@ -2,14 +2,6 @@
 
 class Transaction:
 
-    date = ""
-
-    amount = ""
-
-    account = ""
-
-    label = "Unknow"
-
     def __init__(self, date=None, amount=None, account=None, label=None):
         self.date = date
         self.amount = amount

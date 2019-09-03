@@ -51,7 +51,8 @@ def main():
     beancount_transactions = accounts[0].get_all_transactions()
 
     w = weboob("plop")
-    weboob_transactions = w.get_all_transactions()
+    # TODO login password from config file
+    weboob_transactions = w.get_all_transactions(login, password)
 
     missing_transactions = set(weboob_transactions) - set(beancount_transactions)
     accounts[0].write_transactions(list(missing_transactions))

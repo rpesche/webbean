@@ -10,7 +10,7 @@ class Account:
     def get_all_transactions(self):
         raise LookupError
 
-    def do_nothing():
+    def do_nothing(self):
         pass
 
     def write_transactions(self, account_transactions):
