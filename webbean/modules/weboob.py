@@ -7,16 +7,14 @@ from webbean.core.Transaction import Transaction
 
 class weboob(Account):
 
-    def get_all_transactions(self, login, password):
+    def get_all_transactions(self):
 
         weboob = Weboob()
-        backend = weboob.load_backends(names=['bp'])['bp']
-        backend.config['login'].set(login)
-        backend.config['password'].set(password)
+        backend = weboob.load_backends(names=['bp'])['bp']  # TODO Make it generic
 
         account_transactions = []
         for account in backend.iter_accounts():
-            if account.label != 'COMPTE BANCAIRE':
+            if account.label != 'COMPTE BANCAIRE':  # TODO Make it generic
                 continue
             for weboob_transaction in backend.iter_history(account):
                 transaction = Transaction(date=weboob_transaction.date,
