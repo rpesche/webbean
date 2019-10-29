@@ -8,12 +8,8 @@ import logging
 
 from webbean.modules import MODULES
 
-from webbean.modules.beancount import beancount
-from webbean.modules.weboob import weboob
-
-# To avoid lint error
-beancount.do_nothing()
-weboob.do_nothing()
+from webbean.modules.beancount import beancount  # noqa
+from webbean.modules.weboob import weboob  # noqa
 
 
 def parse_arguments(args):
