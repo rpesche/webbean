@@ -7,7 +7,6 @@ import logging
 
 
 from webbean.modules import MODULES
-
 from webbean.modules.beancount import beancount  # noqa
 from webbean.modules.weboob import weboob  # noqa
 
@@ -49,7 +48,11 @@ def main():
     w = weboob("plop")
     weboob_transactions = w.get_all_transactions()
 
-    missing_transactions = set(weboob_transactions) - set(beancount_transactions)
+    missing_transactions = []
+    for wb_transaction in weboob_transactions:
+        if not [True for tr in beancount_transactions if tr == wb_transaction]:
+            missing_transactions.append(wb_transaction)
+
     accounts[0].write_transactions(list(missing_transactions))
 
 
