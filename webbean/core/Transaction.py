@@ -1,3 +1,7 @@
+from datetime import timedelta
+
+
+DELTA_DAY = 3
 
 
 class Transaction:
@@ -12,7 +16,5 @@ class Transaction:
         return "{}: {}".format(self.date, self.amount)
 
     def __eq__(self, other):
-        return self.date == other.date and self.amount == other.amount
-
-    def __hash__(self):
-        return hash((self.date, self.amount))
+        delta = self.date - other.date
+        return abs(delta) < timedelta(days=DELTA_DAY) and self.amount == other.amount
