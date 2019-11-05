@@ -7,7 +7,7 @@ from webbean.core.Transaction import Transaction
 
 class weboob(Account):
 
-    def get_all_transactions(self):
+    def _get_all_transactions(self):
 
         weboob = Weboob()
         backend = weboob.load_backends(names=['bp'])['bp']  # TODO Make it generic

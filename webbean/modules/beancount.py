@@ -10,7 +10,7 @@ class beancount(Account):
     account_type_name = 'beancount'
     resource_filename = 'beancount.jinja'
 
-    def get_all_transactions(self):
+    def _get_all_transactions(self):
 
         res = beancount_load_file(self.filename)
         beancount_line = res[0]
