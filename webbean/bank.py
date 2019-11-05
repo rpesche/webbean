@@ -11,6 +11,9 @@ from webbean.modules.beancount import beancount  # noqa
 from webbean.modules.weboob import weboob  # noqa
 
 
+DAYS_SYNCED = 30
+
+
 def parse_arguments(args):
 
     accounts = []
@@ -43,10 +46,10 @@ def main():
     if not accounts:
         parser.print_help()
         exit()
-    beancount_transactions = accounts[0].get_all_transactions()
+    beancount_transactions = accounts[0].get_all_transactions(days_synced=DAYS_SYNCED)
 
     w = weboob("plop")
-    weboob_transactions = w.get_all_transactions()
+    weboob_transactions = w.get_all_transactions(days_synced=DAYS_SYNCED)
 
     missing_transactions = []
     for wb_transaction in weboob_transactions:
