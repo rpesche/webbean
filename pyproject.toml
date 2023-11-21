@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "webbean"
+version = "0.0.1"
+description = "An application to get transactions diff between accounting file and bank"
+authors = ["Romain Pesche <romain@pesche.fr>"]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Console",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: BSD License",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+beancount = "^2.3.6"
+woob = "^3.6"
+jinja2 = "^3.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.semantic_release]
+version_variable = [
+    "webbean/__init__.py:__version__"
+]
