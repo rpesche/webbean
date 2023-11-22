@@ -4,7 +4,6 @@ from jinja2 import Environment, PackageLoader
 
 
 class Account:
-
     def __init__(self, filename):
         self.filename = filename
 
@@ -14,9 +13,7 @@ class Account:
         return [tr for tr in trs if tr.date > date_limit]
 
     def write_transactions(self, account_transactions):
-
-        env = Environment(loader=PackageLoader('webbean',
-                                               'resources/template'))
+        env = Environment(loader=PackageLoader("webbean", "resources/template"))
         template = env.get_template(self.resource_filename)
 
         account_transactions = sorted(account_transactions, key=lambda x: x.date)

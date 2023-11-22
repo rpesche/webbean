@@ -5,7 +5,6 @@ DELTA_DAY = 3
 
 
 class Transaction:
-
     def __init__(self, date=None, amount=None, account=None, label=None):
         self.date = date
         self.amount = amount

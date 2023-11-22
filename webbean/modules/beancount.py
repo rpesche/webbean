@@ -6,15 +6,15 @@ from webbean.core.Transaction import Transaction
 
 
 class beancount(Account):
-
-    account_type_name = 'beancount'
-    resource_filename = 'beancount.jinja'
+    account_type_name = "beancount"
+    resource_filename = "beancount.jinja"
 
     def _get_all_transactions(self):
-
         res = beancount_load_file(self.filename)
         beancount_line = res[0]
-        beancount_transactions = [line for line in beancount_line if isinstance(line, beancount_Transaction)]
+        beancount_transactions = [
+            line for line in beancount_line if isinstance(line, beancount_Transaction)
+        ]
 
         account_transactions = []
         for operation in beancount_transactions:

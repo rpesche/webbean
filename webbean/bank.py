@@ -15,7 +15,6 @@ DAYS_SYNCED = 30
 
 
 def parse_arguments(args):
-
     accounts = []
     for module in MODULES.ALL:
         files = args.__dict__[module] or []
@@ -33,7 +32,7 @@ def parse_arguments(args):
 
 def add_modules_arguments(parser):
     for module in MODULES.ALL:
-        parser.add_argument(f'--{module}', nargs='*')
+        parser.add_argument(f"--{module}", nargs="*")
 
 
 def main():
@@ -59,5 +58,5 @@ def main():
     accounts[0].write_transactions(list(missing_transactions))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

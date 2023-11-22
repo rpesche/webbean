@@ -1,6 +1,4 @@
-
-
-WEBOOB = 'weboob'
-BEANCOUNT = 'beancount'
+WEBOOB = "weboob"
+BEANCOUNT = "beancount"
 
 ALL = [BEANCOUNT]
