@@ -52,7 +52,7 @@ def main():
 
     missing_transactions = []
     for wb_transaction in weboob_transactions:
-        if not [True for tr in beancount_transactions if tr == wb_transaction]:
+        if not wb_transaction in beancount_transactions:
             missing_transactions.append(wb_transaction)
 
     accounts[0].write_transactions(list(missing_transactions))
