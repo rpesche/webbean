@@ -1,6 +1,5 @@
 from datetime import timedelta
 
-
 DELTA_DAY = 3
 
 
@@ -12,7 +11,7 @@ class Transaction:
         self.label = label
 
     def __str__(self):
-        return "{}: {}".format(self.date, self.amount)
+        return f"{self.date}: {self.amount}"
 
     def __eq__(self, other):
         delta = self.date - other.date

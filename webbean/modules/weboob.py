@@ -1,7 +1,7 @@
 from woob.core import Weboob
 
-from webbean.modules.Account import Account
 from webbean.core.Transaction import Transaction
+from webbean.modules.Account import Account
 
 
 class weboob(Account):

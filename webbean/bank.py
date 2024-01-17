@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 
-from os import path
 import argparse
 import logging
-
+from os import path
 
 from webbean.modules import MODULES
 from webbean.modules.beancount import beancount  # noqa
-from webbean.modules.weboob import weboob  # noqa
-
+from webbean.modules.weboob import weboob
 
 DAYS_SYNCED = 30
 
@@ -52,7 +49,7 @@ def main():
 
     missing_transactions = []
     for wb_transaction in weboob_transactions:
-        if not wb_transaction in beancount_transactions:
+        if wb_transaction not in beancount_transactions:
             missing_transactions.append(wb_transaction)
 
     accounts[0].write_transactions(list(missing_transactions))
