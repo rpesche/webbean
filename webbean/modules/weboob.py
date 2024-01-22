@@ -1,12 +1,12 @@
-from woob.core import Weboob
+from woob.core import Woob
 
-from webbean.core.Transaction import Transaction
-from webbean.modules.Account import Account
+from webbean.core.transaction import Transaction
+from webbean.modules.account import Account
 
 
-class weboob(Account):
+class Weboob(Account):
     def _get_all_transactions(self):
-        weboob = Weboob()
+        weboob = Woob()
         backend = weboob.load_backends(names=["bp"])["bp"]  # TODO Make it generic
 
         account_transactions = []

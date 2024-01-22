@@ -2,11 +2,11 @@ from beancount.core.data import Open
 from beancount.core.data import Transaction as beancount_Transaction
 from beancount.loader import load_file as beancount_load_file
 
-from webbean.core.Transaction import Transaction
-from webbean.modules.Account import Account
+from webbean.core.transaction import Transaction
+from webbean.modules.account import Account
 
 
-class beancount(Account):
+class Beancount(Account):
     account_type_name = "beancount"
     resource_filename = "beancount.jinja"
 

@@ -2,33 +2,34 @@
 
 import argparse
 import logging
-from os import path
+import sys
+from pathlib import Path
 
-from webbean.modules import MODULES
-from webbean.modules.beancount import beancount  # noqa
-from webbean.modules.weboob import weboob
+from webbean.modules import MODULES, beancount, weboob
 
 DAYS_SYNCED = 30
 
 
 def parse_arguments(args):
     accounts = []
-    for module in MODULES.ALL:
-        files = args.__dict__[module] or []
+    for module_name, module in MODULES.ALL.items():
+        files = args.get(module_name, [])
         for filename in files:
-            if not path.isfile(filename):
-                logging.error(f"the file {filename} doesn' not exist")
+            if not Path(filename).is_file():
+                logging.error(
+                    "the filename  doesn'nt exist",
+                    extra={"account_filename": filename},
+                )
                 return False
 
-            klass = eval(module)
-            account = klass(filename)
+            account = module(filename)
             accounts.append(account)
 
     return accounts
 
 
 def add_modules_arguments(parser):
-    for module in MODULES.ALL:
+    for module in [beancount.Beancount]:
         parser.add_argument(f"--{module}", nargs="*")
 
 
@@ -41,16 +42,18 @@ def main():
     accounts = parse_arguments(args)
     if not accounts:
         parser.print_help()
-        exit()
+        sys.exit()
     beancount_transactions = accounts[0].get_all_transactions(days_synced=DAYS_SYNCED)
 
-    w = weboob("plop")
+    w = weboob.Weboob("plop")
     weboob_transactions = w.get_all_transactions(days_synced=DAYS_SYNCED)
 
     missing_transactions = []
-    for wb_transaction in weboob_transactions:
-        if wb_transaction not in beancount_transactions:
-            missing_transactions.append(wb_transaction)
+    missing_transactions = [
+        wb_transaction
+        for wb_transaction in weboob_transactions
+        if wb_transaction not in beancount_transactions
+    ]
 
     accounts[0].write_transactions(list(missing_transactions))
 
