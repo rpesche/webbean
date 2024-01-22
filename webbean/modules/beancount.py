@@ -29,7 +29,6 @@ class Beancount(Account):
         for operation in beancount_transactions:
             for posting in operation.postings:
                 if "Assets:CCP" in posting.account:
-
                     posting_date = operation.meta.get("real_date") or operation.date
                     amount, _ = str(posting.units).split(" ")
                     transaction = Transaction(date=posting_date, amount=float(amount))
