@@ -1,9 +1,9 @@
-from webbean.modules.beancount import beancount
-from webbean.modules.weboob import weboob
+from webbean.modules.beancount import Beancount
+from webbean.modules.weboob import Weboob
 
 MODULES = {
-    "beancount": beancount,
-    "weboob": weboob,
+    "beancount": Beancount,
+    "weboob": Weboob,
 }
 
-__ALL__ = [beancount, weboob]
+__ALL__ = [Beancount, Weboob]

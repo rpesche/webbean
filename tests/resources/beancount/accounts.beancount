@@ -1,0 +1,41 @@
+option "operating_currency" "EURO"
+2023-01-01 custom "fava-option" "language" "fr"
+
+
+2023-01-01 open Equity:Opening-Balances
+
+; Comptes
+
+2023-01-01 open Assets:CCP
+2023-01-01 open Assets:Other
+
+
+;;;;;; Income ;;;;;
+2023-01-01 open Income:Salary
+
+;;;;;; Expenses ;;;;;;;
+
+2023-01-01 open Expenses:Restaurant
+2023-01-01 open Expenses:MovieTheater
+2023-01-01 open Expenses:Concert
+2023-01-01 open Expenses:Sport
+2023-01-01 open Expenses:Grocery
+
+
+; Non-Consommable
+2023-01-01 open Expenses:Clothes
+2023-01-01 open Expenses:VideoGames
+
+
+; Transport
+2023-01-01 open Expenses:Transport
+2023-01-01 open Expenses:Transport:Train
+2023-01-01 open Expenses:Transport:Car
+
+2023-01-01 open Expenses:Taxes
+
+; Régulier
+2023-01-01 open Expenses:Regular:Rent
+2023-01-01 open Expenses:Regular:Smartphone
+2023-01-01 open Expenses:Regular:Internet
+

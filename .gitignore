@@ -5,6 +5,9 @@ env
 __pycache__
 *.pyc
 
+# Tests
+.coverage
+
 
 # Build
 dist

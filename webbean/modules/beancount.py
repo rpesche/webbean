@@ -1,9 +1,8 @@
-from beancount.core.data import Open
 from beancount.core.data import Transaction as beancount_Transaction
 from beancount.loader import load_file as beancount_load_file
 
+from webbean.core.account import Account
 from webbean.core.transaction import Transaction
-from webbean.modules.account import Account
 
 
 class Beancount(Account):
@@ -35,8 +34,3 @@ class Beancount(Account):
                     account_transactions.append(transaction)
 
         return account_transactions
-
-    def _get_account(self):
-        for tr in self.get_account()[0]:
-            if isinstance(tr, Open):
-                yield tr.account

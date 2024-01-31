@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from jinja2 import Environment, PackageLoader
 
@@ -8,7 +8,7 @@ class Account:
         self.filename = filename
 
     def get_all_transactions(self, days_synced=None):
-        date_limit = datetime.now(tz=datetime.UTC) - timedelta(days=days_synced)
+        date_limit = datetime.now(tz=timezone.utc).date() - timedelta(days=days_synced)
         trs = self._get_all_transactions()
         return [tr for tr in trs if tr.date > date_limit]
 

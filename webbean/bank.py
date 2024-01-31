@@ -2,18 +2,17 @@
 
 import argparse
 import logging
-import sys
 from pathlib import Path
 
-from webbean.modules import MODULES, beancount, weboob
+from webbean.modules import MODULES, weboob
 
 DAYS_SYNCED = 30
 
 
 def parse_arguments(args):
     accounts = []
-    for module_name, module in MODULES.ALL.items():
-        files = args.get(module_name, [])
+    for module_name, module in MODULES.items():
+        files = getattr(args, module_name, [])
         for filename in files:
             if not Path(filename).is_file():
                 logging.error(
@@ -29,7 +28,7 @@ def parse_arguments(args):
 
 
 def add_modules_arguments(parser):
-    for module in [beancount.Beancount]:
+    for module in ["beancount"]:
         parser.add_argument(f"--{module}", nargs="*")
 
 
@@ -40,9 +39,9 @@ def main():
     args = parser.parse_args()
 
     accounts = parse_arguments(args)
-    if not accounts:
-        parser.print_help()
-        sys.exit()
+    # if not accounts:
+    # parser.print_help()
+    # sys.exit()
     beancount_transactions = accounts[0].get_all_transactions(days_synced=DAYS_SYNCED)
 
     w = weboob.Weboob("plop")
